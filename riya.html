@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>For Riya ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: pink;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Cursive', 'Georgia', sans-serif;
+    overflow: hidden;
+}
+
+/* Centered container */
+.center {
+    text-align: center;
+    color: #800040;
+}
+
+/* PAGE 1 */
+#page1 {
+    display: block;
+}
+
+.box {
+    background: black;
+    padding: 25px 35px;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0 0 25px rgba(255,0,100,0.7);
+    transition: transform 1s, opacity 1s;
+}
+
+.box h2 {
+    margin: 0;
+    color: pink;
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+.box:hover {
+    transform: scale(1.05);
+}
+
+/* PAGE 2 */
+#page2 {
+    display: none;
+    flex-direction: column;
+}
+
+.line1 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.line2 {
+    font-size: 2em;
+    margin-bottom: 40px;
+    font-style: italic;
+}
+
+#questionBox {
+    display: none;
+    margin-top: 20px;
+    background: black;
+    padding: 25px 30px;
+    border-radius: 15px;
+    color: pink;
+    box-shadow: 0 0 20px rgba(255,0,100,0.6);
+    animation: fadeIn 2s forwards;
+}
+
+#questionBox button {
+    margin-top: 15px;
+    padding: 8px 25px;
+    border: none;
+    border-radius: 20px;
+    background: pink;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+/* PAGE 3 */
+#page3 {
+    display: none;
+    background: #ffe6f0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.shayari {
+    max-width: 80%;
+    font-size: 1.7em;
+    color: #5c0030;
+    line-height: 2;
+    font-family: 'Cursive', 'Georgia', sans-serif;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div id="page1" class="center">
+    <div class="box" id="box1" onclick="goToPage2()">
+        <h2>Please Enter In My Heart</h2>
+    </div>
+</div>
+
+<!-- PAGE 2 -->
+<div id="page2" class="center">
+    <div class="line1">
+        Tumhari maujoodgi hi meri sabse khubsurat aadat ban chuki hai
+    </div>
+    <div class="line2">
+        I Love You Riya 🥹😚
+    </div>
+
+    <div id="questionBox">
+        <div>
+            Kya tum mere dil ki gehraai mein jhaankna chahti ho?
+        </div>
+        <button onclick="goToPage3()">Enter</button>
+    </div>
+</div>
+
+<!-- PAGE 3 -->
+<div id="page3" class="center">
+    <div class="shayari" id="shayari"></div>
+</div>
+
+<script>
+// PAGE 2 question box delay
+function goToPage2() {
+    document.getElementById("page1").style.display = "none";
+    document.getElementById("page2").style.display = "block";
+
+    setTimeout(() => {
+        document.getElementById("questionBox").style.display = "block";
+    }, 2500); // 2.5 seconds delay
+}
+
+// PAGE 3
+function goToPage3() {
+    document.getElementById("page2").style.display = "none";
+    document.getElementById("page3").style.display = "flex";
+    typeShayari();
+}
+
+// TYPEWRITER EFFECT FOR SHAYARI
+const shayariLines = [
+    "Tere chehre ki wo khubsurat tasveer kahan se lauu ❤️",
+    "Har lamha tere sath guzre, aisi takdeer kahan se lauu 🤧",
+    "Mai mangta hu ....",
+    "Har Safar m sath Tera 🤗",
+    "Tu hi bata mere haathon m...",
+    "Wo lakeer kahan se lau 😚❤️"
+];
+
+let lineIndex = 0;
+let charIndex = 0;
+
+function typeShayari() {
+    const shayariDiv = document.getElementById("shayari");
+    if (lineIndex < shayariLines.length) {
+        const line = shayariLines[lineIndex];
+        if (charIndex < line.length) {
+            shayariDiv.innerHTML += line.charAt(charIndex);
+            charIndex++;
+            setTimeout(typeShayari, 70); // typing speed
+        } else {
+            shayariDiv.innerHTML += "<br><br>";
+            lineIndex++;
+            charIndex = 0;
+            setTimeout(typeShayari, 500); // delay between lines
+        }
+    }
+}
+</script>
+
+</body>
+</html>
